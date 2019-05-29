@@ -30,3 +30,6 @@ Route::resource('student', 'StudentController');
 // Route::post('/projects','ProjectsController@store');
 // Route::get('/projects/create','ProjectsController@create');
 
+
+Route::get('/studentdata/create','StudentDataController@create');
+Route::post('/studentdata','StudentDataController@saveData');
