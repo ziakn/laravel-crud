@@ -15,10 +15,11 @@ class CreateStudentDatasTable extends Migration
     {
         Schema::create('student_datas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $tabel->string('name');
-            $tabel->string('email');
-            $tabel->string('mobile');
-            $tabel->string('password');
+            $table->string('name');
+            $table->string('email');
+            $table->string('mobile');
+            $table->string('password');
+            $table->string('image');
             $table->timestamps();
         });
     }

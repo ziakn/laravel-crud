@@ -30,7 +30,13 @@
     <div class="form-group">
       <input type="text" name="password" value="{{$studentdata->password}}" class="form-control" placeholder="Enter password"/>
   </div>
-       
+  <div class="form-group">
+        <img  src="{{ URL::to('/')}}/images/att/{{$studentdata->image}}" class="img-thumbnail" width="75">
+        <label class=" text-right">Select Profile Image</label>
+        <div class="col-md-8">
+        <input type="file" name="image" />
+        </div> 
+ </div>
     <div class="form-group">
                 <input type="submit" class="btn btn-primary"/>
             </div>

@@ -8,7 +8,7 @@
             <br>
          
         </div>
-    <form method="POST" action="{{route('studentdatasave')}}">
+    <form method="POST" action="{{route('studentdatasave')}}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <input type="text" name="name" class="form-control" placeholder="Enter Fisrt name"/>
@@ -25,6 +25,12 @@
         <div class="form-group">
           <input type="text" name="password" class="form-control" placeholder="Enter password"/>
       </div>
+       <div class="form-group">
+            <label class=" text-right">Select Profile Image</label>
+            <div class="col-md-8">
+            <input type="file" name="image" />
+            </div> 
+     </div>
            
         <div class="form-group">
                     <input type="submit" class="btn btn-primary"/>

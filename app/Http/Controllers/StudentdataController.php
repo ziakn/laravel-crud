@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\URL;
 
 use Illuminate\Http\Request;
 use App\Student_data;
@@ -24,18 +27,25 @@ class StudentdataController extends Controller
 
     public function saveData(Request $request)
     {
-        // for validation........
-        $this->validate($request,[
-            'name'  => 'required',
-            'email'   => 'required',
-            'mobile'  => 'required',
-            'password'  => 'required',
-        ]);
+       
+        if(Input::hasFile('image'))
+        {
+            $file=Input::file('image');
+            $file->move(public_path().'/images/att/', $file->getClientOriginalName());
+            $url=$file->getClientOriginalName();
+            
+        }
+        else
+        {
+            $url= $request->input('image');
+        }
+        
         $studentdata=new Student_data([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'mobile' => $request->get('mobile'),
             'password' => $request->get('password'),
+            'image' => $url
     ]);
     $studentdata->save();
 
@@ -66,12 +76,27 @@ class StudentdataController extends Controller
         // $studentdata->update();
        
         $id=$request->input('id');
+
+        if(Input::hasFile('image'))
+        {
+            $file=Input::file('image');
+            $file->move(public_path().'/images/att/', $file->getClientOriginalName());
+            $url=$file->getClientOriginalName();
+            
+        }
+        else
+        {
+            $url= $request->input('image');
+        }
+
+
         $student_data=new Student_data;
         $data=array(
             'name'=> $request->post('name'),
             'email'=> $request->post('email'),
             'mobile'=> $request->post('mobile'),
             'password'=> $request->post('password'),
+            'image' => $url
         );
         Student_data::where('id','=',$id)->update($data);
         $student_data->update();

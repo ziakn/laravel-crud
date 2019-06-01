@@ -16,6 +16,7 @@
                             <th>Email</th>
                             <th>Mobile </th>
                             <th>Password </th>
+                            <th>Image </th>
                             <th>Edit </th>
                             <th>Delete </th>
                         </tr>
@@ -26,6 +27,7 @@
                                     <td>{{$row['email']}}</td>
                                     <td>{{$row['mobile']}}</td>
                                     <td>{{$row['password']}}</td>
+                                    <td><img src="{{ URL::to('/')}}/images/att/{{$row['image']}}" class="img-thumbnail" width="50"></td>
                                     <td>
                                     <a href="{{url('/studentdata/edit/'.$row['id'])}}" class="btn btn-warning">Edit</a> 
                                     </td>
