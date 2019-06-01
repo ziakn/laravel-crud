@@ -31,5 +31,14 @@ Route::resource('student', 'StudentController');
 // Route::get('/projects/create','ProjectsController@create');
 
 
+Route::get('/studentdata/show','StudentDataController@show');
+
+
 Route::get('/studentdata/create','StudentDataController@create');
-Route::post('/studentdata','StudentDataController@saveData');
+Route::post('/studentdata/saveData','StudentDataController@saveData')->name('studentdatasave');
+
+
+Route::get('/studentdata/edit/{id}','StudentDataController@edit');
+Route::post('/studentdata/update','StudentDataController@update')->name('studentdataupdate');
+
+Route::get('/studentdata/delete/{id}','StudentDataController@delete');
