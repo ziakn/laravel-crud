@@ -28,6 +28,25 @@ class StudentdataController extends Controller
     public function saveData(Request $request)
     {
        
+        $this->validate($request,[
+                'name' => 'required|min:1|max:35',
+    			'email' => 'required|email|unique:student_datas',
+                'mobile' => 'numeric',
+                'password' => 'required',
+                 'image'=>'required'
+                ],[
+                    'name.required' => ' The name field is required.',
+                    'name.min' => ' The first name must be at least 5 characters.',
+                    'name.max' => ' The first name may not be greater than 35 characters.',
+                    'email.required' => 'Email is allready exist, try another one',
+                    // 'mobile.required' => 'Mobile required',
+                    'mobile.numeric' => 'Mobile should be numeric',
+                    'password.required' => 'Password required',
+                    'image' => 'Upload image'
+                ]);
+
+
+
         if(Input::hasFile('image'))
         {
             $file=Input::file('image');
